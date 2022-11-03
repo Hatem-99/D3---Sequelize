@@ -9,7 +9,7 @@ import {
   unauthorizedErrorHandler,
 } from "./errorHandling.js"
 import { pgConnect, syncModels } from "./db.js"
-import cartsRouter from "./api/cart/index.js"
+import productsRouter from "./api/cart/index.js"
 
 
 const server = express()
@@ -20,7 +20,7 @@ server.use(cors())
 server.use(express.json())
 
 
-server.use("/carts", cartsRouter)
+server.use("/carts", productsRouter)
 
 
 server.use(badRequestErrorHandler)

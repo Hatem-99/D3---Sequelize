@@ -37,7 +37,7 @@ const cartSchema = {
   
 
   
-  export const checkCartsSchema = checkSchema(cartSchema) 
+  export const checkProductSchema = checkSchema(cartSchema) 
   
   export const checkValidationResult = (req, res, next) => {
    
