@@ -42,41 +42,41 @@ productsRouter.get("/", async (req, res, next) => {
 
 
 
-productsRouter.get("/:cartId", async (req, res, next) => {
+productsRouter.get("/:productId", async (req, res, next) => {
   try {
-    const cart = await productModel.findByPk(req.params.cartId)
-    if (cart) {
-      res.send(cart)
+    const product = await productModel.findByPk(req.params.productId)
+    if (product) {
+      res.send(product)
     } else {
-      next(createHttpError(404, `Cart with id ${req.params.cartId} not found!`))
+      next(createHttpError(404, `product with id ${req.params.productId} not found!`))
     }
   } catch (error) {
     next(error);
   }
 });
-productsRouter.put("/:cartId", async (req, res, next) => {
+productsRouter.put("/:productId", async (req, res, next) => {
   try {
     const [numberOfUpdatedRows, updatedRecords] = await productModel.update(req.body, {
-      where: { id: req.params.cartId },
+      where: { id: req.params.productId },
       returning: true, 
     })
 
     if (numberOfUpdatedRows === 1) {
       res.send(updatedRecords[0])
     } else {
-      next(createHttpError(404, `Cart with id ${req.params.cartId} not found!`))
+      next(createHttpError(404, `product with id ${req.params.productId} not found!`))
     }
   } catch (error) {
     next(error);
   }
 });
-productsRouter.delete("/:cartId", async (req, res, next) => {
+productsRouter.delete("/:productId", async (req, res, next) => {
   try {
-    const numberOfDeletedRows = await productModel.destroy({ where: { id: req.params.cartId } })
+    const numberOfDeletedRows = await productModel.destroy({ where: { id: req.params.productId } })
     if (numberOfDeletedRows) {
       res.status(204).send()
     } else {
-      next(createHttpError(404, `Cart with id ${req.params.cartId} not found!`))
+      next(createHttpError(404, `product with id ${req.params.productId} not found!`))
     }
   } catch (error) {
     next(error);

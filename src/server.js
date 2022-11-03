@@ -20,7 +20,7 @@ server.use(cors())
 server.use(express.json())
 
 
-server.use("/carts", productsRouter)
+server.use("/products", productsRouter)
 
 
 server.use(badRequestErrorHandler)
