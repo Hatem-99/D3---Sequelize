@@ -9,7 +9,10 @@ import {
   unauthorizedErrorHandler,
 } from "./errorHandling.js"
 import { pgConnect, syncModels } from "./db.js"
-import productsRouter from "./api/cart/index.js"
+import productsRouter from "./api/products/index.js"
+import categoriesRouter from "./api/categories/index.js"
+import reviewsRouter from "./api/reviews/index.js"
+import usersRouter from "./api/users/index.js"
 
 
 const server = express()
@@ -21,7 +24,9 @@ server.use(express.json())
 
 
 server.use("/products", productsRouter)
-
+server.use("/categories", categoriesRouter)
+server.use("/reviews", reviewsRouter)
+server.use("/users", usersRouter)
 
 server.use(badRequestErrorHandler)
 server.use(unauthorizedErrorHandler)

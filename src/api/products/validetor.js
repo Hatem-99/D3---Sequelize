@@ -8,12 +8,6 @@ const cartSchema = {
         errorMessage: "name is a mandatory field and needs to be a string",
       },
     },
-    category: {
-      in: ["body"],
-      isString: {
-        errorMessage: "Category is a mandatory field and needs to be a string",
-      },
-    },
     image: {
         in: ["body"],
         isString: {
